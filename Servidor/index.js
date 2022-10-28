@@ -24,6 +24,7 @@ app.get('/', function (req, res ) {
 var port = 9000;
 app.listen(port);
 console.log("Escuchando en el puerto", port)
+const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
 
 // se manda a llamar las credenciales de Mysql 
 const db_credentials = require('./db_creds');
@@ -37,6 +38,7 @@ const s3 = new AWS.S3(aws_keys.s3);
 const ddb = new AWS.DynamoDB(aws_keys.dynamodb);
 const rek = new AWS.Rekognition(aws_keys.rekognition);
 const translate = new AWS.Translate(aws_keys.translate);
+const cognito = new AmazonCognitoIdentity.CognitoUserPool(aws_keys.cognito);
 
 //*********************************************ALMACENAMIENTO****************************************************
 // ruta que se usa para subir una foto 
